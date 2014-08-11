@@ -1,0 +1,61 @@
+﻿@model List<Shsict.InternalWeb.Models.YardDensity>
+@{
+    ViewBag.Title = "堆场利用率";
+    Layout = "~/Views/Shared/_LayoutPad.cshtml";
+}
+<script type="text/javascript">
+    $(function () {
+        $('input:jqmData(role="datebox")').mobiscroll(opt);
+        $("#SearchBox").change(function () {
+            window.location.href = "/PadYardDensity/Index/" + $("#SearchBox").val();
+        });
+
+        $("ul.ui-listview").find("li div.colorbg").each(function () {
+            $(this).css("width", $(this).prev("div.textcontainer").find("p.ui-li-aside").text());
+        });
+    });
+</script>
+<div class="ui-body">
+    <div class="ui-bar ui-bar-c">
+        <h4>堆场利用率</h4>
+
+        <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" data-corners="false" class="fr">
+            @Html.TextBoxFor(a => a[0].MyDate, new { id = "SearchBox", data_role = "datebox" })
+            <a href="/PadYardDensity/Charts/@Model[0].MyDate" target="_top" class="sta"></a>
+        </fieldset>
+    </div>
+<div class="ui-body-d">
+    <table data-role="table" id="financial-table-reflow" data-mode="reflow" class="financial-table-reflow table-stroke">
+        <thead>
+
+            <tr>
+                <th colspan="6">
+                    <h4>总箱位:@Html.DisplayFor(a => a[0].YD_YARD_SLOT_TOTAL)</h4>
+
+                </th>
+            </tr>
+            <tr>
+                <th>箱号</th>
+                <th>在场箱量</th>
+                <th>适用箱位</th>
+                <th>总箱位</th>
+                <th>占总箱位</th>
+                <th>箱密度</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Shsict.InternalWeb.Models.YardDensity item in Model)
+            {
+                <tr>
+                    <td>@item.YD_CNTR_STATUS</td>
+                    <td>@item.YD_SAC_SUM</td>
+                    <td>@item.YD_YARD_SLOT_SUM</td>
+                    <td>@item.YD_YARD_SLOT_TOTAL</td>
+                    <td>@item.MyYD_PCT</td>
+                    <td>@item.MyYD_DES</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+</div>

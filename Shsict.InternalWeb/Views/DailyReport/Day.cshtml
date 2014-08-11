@@ -1,0 +1,71 @@
+﻿@model Shsict.InternalWeb.Models.DailyReport
+@{
+    ViewBag.Title = "昼夜吞吐量";
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+}
+@section Header{
+    <script type="text/javascript">
+        $(function () {
+            $('input:jqmData(role="datebox")').mobiscroll(opt);
+            $("#SearchBox").change(function () {
+                window.location.href = "/DailyReport/Day/" + $("#SearchBox").val();
+            });
+            $("input[name='radio-choice-b']").change(function () {
+                window.location.href = "/DailyReport/" + $(this).val() + "/" + $("#SearchBox").val();
+            });
+            $(".refresh").click(function () {
+
+                location.reload();
+            });
+        });
+    </script>
+
+    <a id="but_back" data-role="button" data-inline="true" data-rel="external" target="_top"
+        data-transition="slidedown" href="/Portal"
+        class="ui-btn-left back" data-iconpos="notext" data-mini="true">Back </a>
+        <a class="refresh"></a>
+    <div class="ui-body ui-body-c" style="padding: 0 10px; margin-bottom: -1px;">
+
+
+        @Html.TextBoxFor(a => a.MyDate, new { id = "SearchBox", data_role = "datebox" })
+
+        <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+            <input type="radio" name="radio-choice-b" id="radio-choice-c" value="Day" checked="checked">
+            <label for="radio-choice-c">日</label>
+            <input type="radio" name="radio-choice-b" id="radio-choice-d" value="Month">
+            <label for="radio-choice-d">月</label>
+            <input type="radio" name="radio-choice-b" id="radio-choice-e" value="Year">
+            <label for="radio-choice-e">年</label>
+
+        </fieldset>
+
+
+    </div>
+}
+
+<h3 class="tit">基本信息</h3>
+<table data-role="table" data-mode="reflow" class=" table-stroke">
+    <thead>
+        <tr>
+            <th data-priority="persist">日计划TEU</th>
+            <th data-priority="2">日实际TEU</th>
+            <th data-priority="3">日驳船</th>
+            <th data-priority="4">日穿梭巴士</th>
+            <th data-priority="5">日计划完成率</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Html.DisplayFor(a => a.LASTALLDAY_PLAN)</td>
+            <td>@Html.DisplayFor(a => a.LASTALLDAY_ACTUAL)</td>
+            <td>@Html.DisplayFor(a => a.LASTALLDAY_BARGE)</td>
+            <td>@Html.DisplayFor(a => a.LASTALLDAY_SHUTTLE)</td>
+            <td>@Html.DisplayFor(a => a.MyLASTALLDAY_COMPLETERATE)</td>
+
+        </tr>
+    </tbody>
+</table>
+
+
+

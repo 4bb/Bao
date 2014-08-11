@@ -1,0 +1,59 @@
+﻿@model List<Shsict.InternalWeb.Models.VesselDepart>
+@{
+    ViewBag.Title = "靠离泊情况";
+    Layout = "~/Views/Shared/_LayoutPad.cshtml";
+}
+<script type="text/javascript">
+    $(function () {
+        $('input:jqmData(role="datebox")').mobiscroll(opt);
+        $("#SearchBox").change(function () {
+            window.location.href = "/PadVesselBerth/Depart/" + $("#SearchBox").val();
+        });
+        $("input[name='radio-choice-b']").change(function () {
+            window.location.href = "/PadVesselBerth/" + $(this).val() + "/" + $("#SearchBox").val();
+        });
+    });
+</script>
+<div class="ui-body">
+    <div class="ui-bar ui-bar-c">
+        <h4>靠离泊情况</h4>
+        <div class="clear"></div>
+        <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" data-corners="false" style="float:left">
+            @Html.TextBoxFor(a => a[0].MyDate, new { id = "SearchBox", data_role = "datebox" })
+            <input type="radio" name="radio-choice-b" id="radio-choice-c" value="Berth">
+            <label for="radio-choice-c">靠泊</label>
+            <input type="radio" name="radio-choice-b" id="radio-choice-e" value="Depart" checked="checked">
+            <label for="radio-choice-e">离泊</label>
+        </fieldset>
+        <div class="clearfix zdl" style="float: right">
+            <h6>准点率:</h6>
+            <h2>@Model[0].punctualityRate.ToString("0.00")%</h2>
+        </div>
+    </div>
+    <div class="ui-body-d">
+        <table data-role="table" id="financial-table-reflow" data-mode="reflow" class="financial-table-reflow table-stroke">
+            <thead>
+                <tr>
+                    <th>船名</th>
+                    <th>计划离泊</th>
+                    <th>实际离泊</th>
+                    <th>完工时间</th>
+                    <th>状态</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Shsict.InternalWeb.Models.VesselDepart item in Model)
+                {
+                    <tr>
+                        <td>@item.VSL_CNNAME</td>
+                        <td>@item.VBT_PDPTDT</td>
+                        <td>@item.VBT_ADPTDT</td>
+                        <td>@item.VOT_AWKENTM</td>
+                        <td>@item.VBT_STATUS</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

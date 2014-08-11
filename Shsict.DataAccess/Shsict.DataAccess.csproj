@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E2FBA28A-DAC9-45AF-9A21-22765E443621}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Shsict.DataAccess</RootNamespace>
+    <AssemblyName>Shsict.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DailyReport.cs" />
+    <Compile Include="InternalUser.cs" />
+    <Compile Include="OnBerth.cs" />
+    <Compile Include="OperatePlan.cs" />
+    <Compile Include="SendMessage.cs" />
+    <Compile Include="TruckStatus.cs" />
+    <Compile Include="VesselBerth.cs" />
+    <Compile Include="ThreeShift.cs" />
+    <Compile Include="ConnectString\ConnectStringMsSql.cs" />
+    <Compile Include="ConnectString\ConnectStringOracle.cs" />
+    <Compile Include="ContainerDetail.cs" />
+    <Compile Include="ContainerEload.cs" />
+    <Compile Include="ContainerMain.cs" />
+    <Compile Include="ContainerPlan.cs" />
+    <Compile Include="ContainerPlanUser.cs" />
+    <Compile Include="Custom\LogEvent.cs" />
+    <Compile Include="Custom\MyFavourite.cs" />
+    <Compile Include="Custom\Notice.cs" />
+    <Compile Include="OTruck.cs" />
+    <Compile Include="OVesselPlan.cs" />
+    <Compile Include="PortOfCall.cs" />
+    <Compile Include="DAHelper\OracleDataHelper.cs" />
+    <Compile Include="DAHelper\OracleDataTool.cs" />
+    <Compile Include="DAHelper\SQLHelper.cs" />
+    <Compile Include="MSSqlObject\Container.cs" />
+    <Compile Include="MSSqlObject\Truck.cs" />
+    <Compile Include="MSSqlObject\VesselPlan.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TVDangerContainer.cs" />
+    <Compile Include="TVDangerPlan.cs" />
+    <Compile Include="TwinLift.cs" />
+    <Compile Include="VesselDepart.cs" />
+    <Compile Include="VesselEfficiency.cs" />
+    <Compile Include="Custom\VisitMsg.cs" />
+    <Compile Include="YardDensity.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

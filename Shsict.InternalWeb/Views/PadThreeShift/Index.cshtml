@@ -1,0 +1,75 @@
+﻿@model List<Shsict.InternalWeb.Models.ThreeShift>
+@{
+    ViewBag.Title = "第一、二、三工班吞吐量";
+    Layout = "~/Views/Shared/_LayoutPad.cshtml";
+}
+ <script type="text/javascript">
+        $(function () {
+            $('input:jqmData(role="datebox")').mobiscroll(opt);
+            $("#SearchBox").change(function () {
+                window.location.href = "/PadThreeShift/Index/" + $("#SearchBox").val();
+            });
+        });
+    </script>
+<div class="ui-body">
+     <div class="ui-bar ui-bar-c">
+        <h4>第一、二、三工班吞吐量</h4>
+           <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" data-corners="false">
+               @Html.TextBoxFor(a => a[0].MyDate, new { id = "SearchBox", data_role = "datebox" })
+               </fieldset>
+             </div>
+      <div class="ui-body-d">
+        <table data-role="table" id="financial-table-reflow" data-mode="reflow" class="financial-table-reflow table-stroke">       
+            <thead>         
+                <tr class="th-groups">
+                    <th colspan="3">第一工班</th>
+                    <th colspan="3">第二工班</th>
+                    <th colspan="3">第三工班</th>
+                </tr>
+                <tr>
+                    <th>计划TEU</th>
+                    <th>实际TEU</th>
+                    <th>计划完成率</th>
+                    <th>计划TEU</th>
+                    <th>实际TEU</th>
+                    <th>计划完成率</th>
+                    <th>计划TEU</th>
+                    <th>实际TEU</th>
+                    <th>计划完成率</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                     @foreach (Shsict.InternalWeb.Models.ThreeShift item in Model)
+            {
+                if (item.SHIFT.Trim() == "1")
+                {   <td>@item.SHIFTPLAN</td>
+                <td>@item.SHIFTACTUAL</td>
+                <td>@item.MySHIFTCOMPLETERATE</td>      
+                }
+            }
+               @foreach (Shsict.InternalWeb.Models.ThreeShift item in Model)
+            {
+                if (item.SHIFT.Trim() == "2")
+                {
+                <td>@item.SHIFTPLAN</td>
+                <td>@item.SHIFTACTUAL</td>
+                <td>@item.MySHIFTCOMPLETERATE</td>
+                }
+            }
+                    @foreach (Shsict.InternalWeb.Models.ThreeShift item in Model)
+            {
+                if (item.SHIFT.Trim() == "3")
+                { 
+                <td>@item.SHIFTPLAN</td>
+                <td>@item.SHIFTACTUAL</td>
+                <td>@item.MySHIFTCOMPLETERATE</td>
+                }
+            }
+                </tr>
+              
+            </tbody>
+        </table>
+    </div>
+</div>

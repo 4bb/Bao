@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "在泊船舶实际及计划毛船时量";
+    Layout = "~/Views/Shared/_LayoutPad.cshtml";
+}
+<script type="text/javascript">
+    $(function () {
+        $("input[name='radio-choice-b']").change(function () {
+            window.location.href = "/PadVesselAmount/" + $(this).val();
+        });
+    });
+</script>
+<div class="ui-body">
+    <div class="ui-bar ui-bar-c">
+        <h4>在泊船舶实际及计划毛船时量</h4>
+        <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" data-corners="false">
+            <input type="radio" name="radio-choice-b" id="radio-choice-c" value="Vessel">
+            <label for="radio-choice-c">大船</label>
+            <input type="radio" name="radio-choice-b" id="radio-choice-e" value="Barge" checked="checked">
+            <label for="radio-choice-e">驳船</label>
+        </fieldset>
+    </div>
+    <div class="ui-body-d">
+        <table data-role="table" id="financial-table-reflow" data-mode="reflow" class="financial-table-reflow table-stroke">
+            <thead>
+                <tr>
+                    <th>船名</th>
+                    <th>毛船时量</th>
+                    <th>计划船时量</th>
+                      <th>预计船时量</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Shsict.InternalWeb.Models.VesselAmount item in Model)
+                {
+                    <tr>
+                        <td>@item.VESSELNAME</td>
+                        <td>@item.VOCOPTM</td>
+                        <td>@item.AMOUNTOFVESSEL</td>
+                        <td>@item.TARGETVOCTM</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

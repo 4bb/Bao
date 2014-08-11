@@ -1,0 +1,119 @@
+﻿@model List<Shsict.InternalWeb.Models.TwinLift>
+@{
+    ViewBag.Title = "双吊具作业情况";
+    Layout = "~/Views/Shared/_LayoutPad.cshtml";
+}
+<script type="text/javascript">
+    $(function () {
+        $('input:jqmData(role="datebox")').mobiscroll(opt);
+        $("#SearchBox").change(function () {
+            window.location.href = "/PadTwinLift/Index/" + $("#SearchBox").val();
+        });
+        $("input[name='radio-choice-b']").change(function () {
+            window.location.href = "/PadTwinLift/Index" + $("#SearchBox").val();
+        });
+    });
+</script>
+<div class="ui-body">
+    <div class="mlr-15">
+        <div class="ui-bar ui-bar-c ">
+            <h4>双吊具作业情况</h4>
+            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                @Html.TextBoxFor(a => a[0].MyDate, new { id = "SearchBox", data_role = "datebox" })
+
+            </fieldset>
+        </div>
+        <div class="ui-body-d">
+            <table data-role="table" id="financial-table-reflow" data-mode="reflow" class="financial-table-reflow table-stroke">
+                <thead>
+                    <tr class="th-groups">
+                        <th></th>
+                        <th colspan="6">进口</th>
+                        <th colspan="8">出口</th>
+                    </tr>
+                    <tr class="twinf">
+                        <th>&nbsp;</th>
+                        <th>总箱量</th>
+                        <th>可作业<br>箱量</th>
+                        <th>可作<br>业率</th>
+                        <th>作业<br>箱量</th>
+                        <th>执行率</th>
+                        <th>效率</th>
+                        <th>总箱量</th>
+                        <th>可配<br>箱量</th>
+                        <th>可配率</th>
+                        <th>实配<br>箱量</th>
+                        <th>实配率</th>
+                        <th>作业<br>箱量</th>
+                        <th>执行率</th>
+                        <th>效率</th>
+                    </tr>
+                </thead>
+                @{   var query = from tl in Model
+                                 orderby tl.VESSELNAME descending
+                                 group tl by new { tl.VESSELNAME } into vName
+                                 select new
+                                 {
+                                     vName = vName.Key.VESSELNAME
+                                 };
+                             
+                   
+                             
+                    <tbody class="twinf">
+                        @foreach (var nameList in query)
+                        {
+                            var import = Model.Find(m => m.IEFG.Equals("I") && m.VESSELNAME.Equals(nameList.vName));
+                            var export = Model.Find(m => m.IEFG.Equals("E") && m.VESSELNAME.Equals(nameList.vName)); 
+                            <tr>
+                                <th>@nameList.vName</th>
+                                @if (@import != null)
+                                { 
+                                    <td>@import.TOTALCNT</td>
+                                    <td>@import.CANSTGOPTCNT</td>
+                                    <td>@import.CANSTGOPTRATE</td>
+                                    <td>@import.OPERATECNT</td>
+                                    <td>@import.OPERATERATE</td>
+                                    <td>@import.EFFICIENCY</td>
+                                }
+                                else
+                                {
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                         
+                                }
+
+                                @if (@export != null)
+                                {
+                                    <td>@export.TOTALCNT</td>
+                                    <td>@export.CANSTGOPTCNT</td>
+                                    <td>@export.CANSTGOPTRATE</td>
+                                    <td>@export.STORAGECNT</td>
+                                    <td>@export.STORAGERATE</td>
+                                    <td>@export.OPERATECNT</td>
+                                    <td>@export.OPERATERATE</td>
+                                    <td>@export.EFFICIENCY</td>
+                                }
+                                else
+                                {
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                }
+                            </tr>
+                        }
+
+                    </tbody>
+                }
+            </table>
+        </div>
+    </div>
+</div>

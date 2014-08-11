@@ -1,0 +1,130 @@
+﻿@model List<Shsict.InternalWeb.Models.TwinLift>
+
+@{
+    ViewBag.Title = "双吊具作业情况";
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+}
+
+@section Header{
+    <script type="text/javascript">
+        $(function () {
+            $(".refresh").click(function () {
+                location.reload();
+            });
+        })
+    </script>
+    <a id="but_back" data-role="button" data-inline="true" data-rel="back"
+       data-transition="slidedown"
+       class="ui-btn-left back" data-iconpos="notext" data-mini="true">Back</a>
+    <a class="refresh"></a>
+}
+@if (Model != null)
+{<h3 class="tit">船名：@Model[0].VESSELNAME</h3>
+}
+
+@foreach (Shsict.InternalWeb.Models.TwinLift item in Model)
+{
+    if (@item.IEFG.ToUpper() == "I")
+    {
+        <div data-role="collapsible" data-inset="false" data-collapsed="false">
+            <h3 class="tit">进口</h3>
+            <table data-role="table" data-mode="reflow" class="table-stroke">
+                <thead>
+                    <tr>
+                        <th data-priority="persist">总箱量</th>
+                        <th data-priority="2">可作业/配箱量</th>
+                        <th data-priority="3">可作业/配率</th>
+                        <th data-priority="4">作业箱量</th>
+                        <th data-priority="5">执行率</th>
+                        <th data-priority="6">双吊具效率</th>
+                      
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            @item.TOTALCNT
+                        </td>
+                        <td>
+                            @item.CANSTGOPTCNT
+                        </td>
+                        <td>
+                            @item.CANSTGOPTRATE
+                        </td>
+                        <td>
+                            @item.OPERATECNT
+                        </td>
+                        <td>
+                            @item.OPERATERATE
+                        </td>
+                        <td>
+                            @item.EFFICIENCY
+                        </td>
+                       
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+}
+
+
+@foreach (Shsict.InternalWeb.Models.TwinLift item in Model)
+{
+    if (@item.IEFG.ToUpper() == "E")
+    {
+        <div data-role="collapsible" data-inset="false" data-collapsed="false">
+            <h3 class="tit">出口</h3>
+            <table data-role="table" data-mode="reflow" class="table-stroke">
+                <thead>
+                    <tr>
+                        <th data-priority="persist">总箱量</th>
+                        <th data-priority="2">可作业/配箱量</th>
+                        <th data-priority="3">可作业/配率</th>
+                        <th data-priority="4">作业箱量</th>
+                        <th data-priority="5">实配箱量</th>
+                        <th data-priority="6">实配率</th>
+                        <th data-priority="7">执行率</th>
+                        <th data-priority="8">双吊具效率</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            @item.TOTALCNT
+                        </td>
+                        <td>
+                            @item.CANSTGOPTCNT
+                        </td>
+                        <td>
+                            @item.CANSTGOPTRATE
+                        </td>
+                        <td>
+                            @item.STORAGECNT
+                        </td>
+                        <td>
+                            @item.STORAGERATE
+                        </td>
+                        <td>
+                            @item.OPERATECNT
+                        </td>
+                        <td>
+                            @item.OPERATERATE
+                        </td>
+                        <td>
+                            @item.EFFICIENCY
+                        </td>
+                   
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+}
+
+
+
+

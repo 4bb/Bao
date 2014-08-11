@@ -1,0 +1,105 @@
+﻿@model Shsict.InternalWeb.Models.LoginModel
+@{
+    ViewBag.Title = "盛东公司信息管理平台 PAD登录";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head id="masterHead" runat="server">
+    <title>盛东公司信息管理平台 - 引导页</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=7" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/jquery.mobile-1.3.2.min.js"></script>
+    <link href="~/Scripts/Jquery.mobile/jquery.mobile-1.3.2.min.css" rel="stylesheet" />
+    <link href="~/Content/themes/PadScreen.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(function () {
+            $("#loginBtn").click(function () {
+                var userName = $("#un").val();
+                var passWord = $("#pw").val();
+                var mydata = "SUR_USERACCOUNT=" + userName + "&SUR_PASSWORD=" + passWord;
+
+                if (userName != "" && passWord != "") {
+                    $.ajax({
+                        url: "/Login/LogOn",
+                        type: "post",
+                        data: mydata,
+                        success: function (msg) {
+                            if (msg == "success") {
+                                $("#errorMsg").css("display", "none");
+                                window.location.href = "/Portal/Pad";
+                            }
+                            else {
+                                $("#errorMsg").css("display", "block");
+                                $("#errorMsg").text(msg);
+                            }
+                        },
+                        error: function (msg) {
+                            $("#errorMsg").css("display", "block");
+                            $("#errorMsg").text(msg);
+                        }
+                    });
+                }
+                else {
+                    $("#errorMsg").css("display", "block");
+                    $("#errorMsg").text("提示：用户名与密码不能为空");
+                    return false;
+                }
+            });
+
+            $("#LogOffBtn").click(function () {
+                $.ajax({
+                    url: "/Login/PadLogOff",
+                    type: "post",
+                    success: function (msg) {
+                        if (msg == "success") {
+                            window.location.href = "/Login/Pad"
+                            $("#errorMsg").text("提示：注销成功");
+                        }
+                        else
+                            $("#errorMsg").css("display", "block");
+                        $("#errorMsg").text("提示：注销失败");
+                    },
+                    error: function (msg) {
+                        $("#errorMsg").css("display", "block");
+                        $("#errorMsg").text("提示：注销失败");
+                    }
+                });
+            });
+        });
+
+    </script>
+</head>
+
+<body class="loading-pad">
+    <div class="main" data-role="page">
+        <div class="login">
+            <section id="loginForm">
+                @using (Html.BeginForm("index", "Login", FormMethod.Post, new { id = "loginForm", ReturnUrl = ViewBag.ReturnUrl }))
+                {
+                    <div class=" con">
+                        <h3>&nbsp;</h3>
+                        <label for="un" class="ui-hidden-accessible">Username:</label>
+                        @Html.TextBoxFor(m => m.SUR_USERACCOUNT, new { name = "user", type = "text", id = "un", placeholder = "username", data_theme = "b" })
+                        @Html.ValidationMessageFor(m => m.SUR_USERACCOUNT)
+
+                        <label for="pw" class="ui-hidden-accessible">Password:</label>
+                        @Html.PasswordFor(m => m.SUR_PASSWORD, new { name = "pass", type = "password", id = "pw", placeholder = "password", data_theme = "b" })
+                        @Html.ValidationMessageFor(m => m.SUR_PASSWORD)
+                        <button type="button" class="ui-btn ui-corner-all ui-shadow" id="loginBtn">登录</button>
+                        <button type="button" class="ui-btn ui-corner-all ui-shadow" id="LogOffBtn">注销</button>
+                    </div>
+
+                    @Html.ValidationSummary(true)
+                }
+            </section>
+            <div id="errorMsg" class="ui-corner-all ui-shadow alert" style="display: none"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+﻿@model List<Shsict.InternalWeb.Models.Mechanical>
+
+@{
+    ViewBag.Title = "未完成维修的机械及故障时间";
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+}
+
+@section Header{
+    <script type="text/javascript">
+        $(function () {
+            $("#MyTime").mobiscroll(opt);
+            $("#BtnMyTime").click(function () { $("#MyTime").focus(); });
+
+            $("#SearchBox").change(function () {
+                window.location.href = "/MechanicalError/Index/" + $("#MyTime").val() + "$" + $("#SearchBox").val();
+            });
+            $("#MyTime").change(function () {
+                window.location.href = "/MechanicalError/Index/" + $("#MyTime").val() + "$" + $("#SearchBox").val();
+            });
+            $(".refresh").click(function () {
+                location.reload();
+            });
+        });
+    </script>
+    <a id="but_back" data-role="button" data-inline="true" data-rel="external" target="_top"
+        data-transition="slidedown" href="/Portal" class="ui-btn-left back" data-iconpos="notext" data-mini="true">Back</a>
+    <a class="refresh"></a>
+
+    <div class="ui-body ui-body-c" style="padding: 0 10px; margin-bottom: -1px;">
+        <div style="position: absolute; left: 10px; top: 0px">@Html.TextBoxFor(a => a[0].MyDate, new { id = "MyTime", data_role = "datebox" }) </div>
+        @Html.TextBoxFor(a => a[0].SEARCHKEY, new { id = "SearchBox", data_role = "datebox", placeholder = "请输入文字", style = "max-width:500px" })
+        <button data-icon="grid" id="BtnMyTime" >@Model[0].MyDate</button>
+    </div>
+}
+
+
+<ul data-role="listview">
+    @foreach (Shsict.InternalWeb.Models.Mechanical item in Model)
+    {
+        if (@item.MECHANICALNO != "暂无数据")
+        {
+      
+        <li>
+            <h3>@item.MECHANICALNO</h3>
+            <p>故障描述：@item.SENDMESSAGE </p>
+            <p>修复时长：@item.EngERRORTIME </p>
+            <p>确认时长：@item.OptERRORTIME </p>
+            <p>故障状态：@item.FaultStatus </p>
+            <p>报故时间：@item.REPORTTIME </p>
+            <p>接故时间：@item.RECEIVETIME </p>
+            <p>修复时间：@item.REPAIRTIME </p>
+            <p>确认时间：@item.CONFIRMREPAIRTIME </p>
+        </li>
+            
+        }
+        else
+        {
+        <li>
+            <h3>暂无数据</h3>
+        </li>
+        }
+    }
+</ul>

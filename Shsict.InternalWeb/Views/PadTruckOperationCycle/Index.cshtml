@@ -1,0 +1,63 @@
+﻿@model List<Shsict.InternalWeb.Models.TruckOperationCycle>
+@{
+    ViewBag.Title = "单车运行周期";
+    Layout = "~/Views/Shared/_LayoutPad.cshtml";
+}
+      <script type="text/javascript">
+          $(function () {
+              $('input:jqmData(role="datebox")').mobiscroll(opt);
+              $("#plus").click(function () {
+                  var myTime = parseInt($("#myTime .ui-btn-text").text()) + 5;
+                  $("#myTime span.ui-btn-text").text(myTime + "min");
+                  window.location.href = "/PadTruckOperationCycle/Index/" + myTime;
+              });
+              $("#minus").click(function () {
+                  var myTime = parseInt($("#myTime .ui-btn-text").text()) - 5;
+                  $("#myTime span.ui-btn-text").text(myTime + "min");
+                  window.location.href = "/PadTruckOperationCycle/Index/" + myTime;
+              });
+
+          });
+    </script>
+<div class="ui-body">
+<div class="ui-bar ui-bar-c">
+        <h4>单车运行周期</h4>
+            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                            @{ string MyTime = "25min";}
+                            @if (@Html.ViewContext.RouteData.Values["id"] != null)
+                            {
+                                MyTime = @Html.ViewContext.RouteData.Values["id"].ToString() + "min";
+                            }
+
+                            <a id="myTime" href="#" data-role="button" data-inline="true">
+                                @MyTime
+                            </a>
+                            <a id="plus" href="#" data-role="button" data-icon="plus" data-iconpos="notext">Arrow up</a>
+                            <a id="minus" href="#" data-role="button" data-icon="minus" data-iconpos="notext">Arrow down</a>
+                        </fieldset>
+        </div>
+      <div class="ui-body-d">
+        <table data-role="table" id="financial-table-reflow" data-mode="reflow" class="financial-table-reflow table-stroke">
+            <thead>
+       
+                <tr>
+                    <th>集卡号</th>
+                    <th>完成车次数</th>
+                    <th>平均周期</th>
+                    <th>当前周期</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Shsict.InternalWeb.Models.TruckOperationCycle item in Model)
+                {
+                    <tr>
+                        <th>@item.TRUCKNO</th>
+                        <td>@item.COMPLETETRUCKNUM</td>
+                        <td>@item.AVEPERIOD</td>
+                        <td>@item.CURRENTINSTRUCTION</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

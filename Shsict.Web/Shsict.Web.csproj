@@ -1,0 +1,532 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E089B6DF-06AA-40C5-910A-1C84C1B3A38E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Shsict.Web</RootNamespace>
+    <AssemblyName>Shsict.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Shsict\images\arrow.png" />
+    <Content Include="App_Themes\Shsict\images\arrow2.png" />
+    <Content Include="App_Themes\Shsict\images\bg.png" />
+    <Content Include="App_Themes\Shsict\images\bg_login.jpg" />
+    <Content Include="App_Themes\Shsict\images\fav.png" />
+    <Content Include="App_Themes\Shsict\images\fav2-2.png" />
+    <Content Include="App_Themes\Shsict\images\fav2.png" />
+    <Content Include="App_Themes\Shsict\images\fav_2.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Acontainer.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Agency.png" />
+    <Content Include="App_Themes\Shsict\images\icon-ArrivalContainer-Time.png" />
+    <Content Include="App_Themes\Shsict\images\icon-ArrivalPort-Time.png" />
+    <Content Include="App_Themes\Shsict\images\icon-arrive-actual.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Arrive-Plan.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Arrive-Time.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Arrive-Type.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Arrive-X2.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Arrive.png" />
+    <Content Include="App_Themes\Shsict\images\icon-ArriveYard-Time.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Berth-Actual.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Berth-Plan.png" />
+    <Content Include="App_Themes\Shsict\images\icon-BillOfLading-Num.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Container-Begin.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Container-Deadline.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Container-No.png" />
+    <Content Include="App_Themes\Shsict\images\icon-CSI.png" />
+    <Content Include="App_Themes\Shsict\images\icon-custom.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Customs-Clearance.png" />
+    <Content Include="App_Themes\Shsict\images\icon-CustomsClearance-Time.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Departure-Actual.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Departure-Plan.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Departure-Time.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Departure-Type.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Departure-X2.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Departure.png" />
+    <Content Include="App_Themes\Shsict\images\icon-DepartureYard-Time.png" />
+    <Content Include="App_Themes\Shsict\images\icon-export.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Fcontainer.png" />
+    <Content Include="App_Themes\Shsict\images\icon-inport.png" />
+    <Content Include="App_Themes\Shsict\images\icon-IsCustomsClosing.png" />
+    <Content Include="App_Themes\Shsict\images\icon-operation.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Plan-Time.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Plan-X2.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Plan.png" />
+    <Content Include="App_Themes\Shsict\images\icon-PlanAarrange-Time.png" />
+    <Content Include="App_Themes\Shsict\images\icon-PlanAccept.png" />
+    <Content Include="App_Themes\Shsict\images\icon-PlanAccepted-Time.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Planno.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Port-ID.png" />
+    <Content Include="App_Themes\Shsict\images\icon-SendPackingList-Time.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Stowage-Time.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Vessel-ID.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Vessel-name.png" />
+    <Content Include="App_Themes\Shsict\images\icon-Vessel-Time.png" />
+    <Content Include="App_Themes\Shsict\images\icon-voyage.png" />
+    <Content Include="App_Themes\Shsict\images\icon_04_1.png" />
+    <Content Include="App_Themes\Shsict\images\icon_1.png" />
+    <Content Include="App_Themes\Shsict\images\icon_1_1.png" />
+    <Content Include="App_Themes\Shsict\images\icon_2.png" />
+    <Content Include="App_Themes\Shsict\images\icon_2_1.png" />
+    <Content Include="App_Themes\Shsict\images\icon_3.png" />
+    <Content Include="App_Themes\Shsict\images\icon_3_1.png" />
+    <Content Include="App_Themes\Shsict\images\icon_4.png" />
+    <Content Include="App_Themes\Shsict\images\icon_5.png" />
+    <Content Include="App_Themes\Shsict\images\icon_5_1.png" />
+    <Content Include="App_Themes\Shsict\images\icon_6.png" />
+    <Content Include="App_Themes\Shsict\images\icon_6_1.png" />
+    <Content Include="App_Themes\Shsict\images\icon_7.png" />
+    <Content Include="App_Themes\Shsict\images\icon_7_1.png" />
+    <Content Include="App_Themes\Shsict\images\icon_8.png" />
+    <Content Include="App_Themes\Shsict\images\icon_8_1.png" />
+    <Content Include="App_Themes\Shsict\images\icon_9.png" />
+    <Content Include="App_Themes\Shsict\images\icon_9_1.png" />
+    <Content Include="App_Themes\Shsict\images\loading-1136.jpg" />
+    <Content Include="App_Themes\Shsict\images\loading-1136.png" />
+    <Content Include="App_Themes\Shsict\images\loading-320.png" />
+    <Content Include="App_Themes\Shsict\images\loading-640-960.png" />
+    <Content Include="App_Themes\Shsict\images\loading.jpg" />
+    <Content Include="App_Themes\Shsict\images\logo-X2.png" />
+    <Content Include="App_Themes\Shsict\images\logo.png" />
+    <Content Include="App_Themes\Shsict\images\m005.png" />
+    <Content Include="App_Themes\Shsict\images\m005_2.png" />
+    <Content Include="App_Themes\Shsict\images\m1.png" />
+    <Content Include="App_Themes\Shsict\images\m1_2.png" />
+    <Content Include="App_Themes\Shsict\images\m2.png" />
+    <Content Include="App_Themes\Shsict\images\m2_2.png" />
+    <Content Include="App_Themes\Shsict\images\m3.png" />
+    <Content Include="App_Themes\Shsict\images\m3_2.png" />
+    <Content Include="App_Themes\Shsict\images\m4.png" />
+    <Content Include="App_Themes\Shsict\images\m4_2.png" />
+    <Content Include="App_Themes\Shsict\images\name.jpg" />
+    <Content Include="App_Themes\Shsict\images\name2.jpg" />
+    <Content Include="App_Themes\Shsict\images\name3.jpg" />
+    <Content Include="App_Themes\Shsict\images\name4.jpg" />
+    <Content Include="App_Themes\Shsict\images\name5.jpg" />
+    <Content Include="App_Themes\Shsict\images\refresh.png" />
+    <Content Include="App_Themes\Shsict\images\refresh2.png" />
+    <Content Include="App_Themes\Shsict\images\star.png" />
+    <Content Include="App_Themes\Shsict\Screen.css" />
+    <Content Include="Container_ArrangeTime_Detail.aspx" />
+    <Content Include="Container_ArrangeTime_List.aspx" />
+    <Content Include="Favourite.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Login.aspx" />
+    <Content Include="Container_Acceptance_Detail.aspx" />
+    <Content Include="Container_Acceptance_List.aspx" />
+    <Content Include="Container_Plan_Detail.aspx" />
+    <Content Include="Container_Plan_List.aspx" />
+    <Content Include="Container_Port_Detail.aspx" />
+    <Content Include="Container_Port_List.aspx" />
+    <Content Include="Container_Trace_Detail.aspx" />
+    <Content Include="Container_Trace_List.aspx" />
+    <Content Include="Control\ShsictFooter.ascx" />
+    <Content Include="Default.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Container_ArrangeTime_Detail.aspx.cs">
+      <DependentUpon>Container_ArrangeTime_Detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Container_ArrangeTime_Detail.aspx.designer.cs">
+      <DependentUpon>Container_ArrangeTime_Detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Container_ArrangeTime_List.aspx.cs">
+      <DependentUpon>Container_ArrangeTime_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Container_ArrangeTime_List.aspx.designer.cs">
+      <DependentUpon>Container_ArrangeTime_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ContainerAcceptanceList.ashx.cs">
+      <DependentUpon>ContainerAcceptanceList.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ContainerArrangeTimeList.ashx.cs">
+      <DependentUpon>ContainerArrangeTimeList.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ContainerPlanDetail.ashx.cs">
+      <DependentUpon>ContainerPlanDetail.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Favourite.aspx.cs">
+      <DependentUpon>Favourite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Favourite.aspx.designer.cs">
+      <DependentUpon>Favourite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\NoticeHandler.ashx.cs">
+      <DependentUpon>NoticeHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ContainerPlanList.ashx.cs">
+      <DependentUpon>ContainerPlanList.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ContainerPortList.ashx.cs">
+      <DependentUpon>ContainerPortList.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Container_Acceptance_Detail.aspx.cs">
+      <DependentUpon>Container_Acceptance_Detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Container_Acceptance_Detail.aspx.designer.cs">
+      <DependentUpon>Container_Acceptance_Detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Container_Acceptance_List.aspx.cs">
+      <DependentUpon>Container_Acceptance_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Container_Acceptance_List.aspx.designer.cs">
+      <DependentUpon>Container_Acceptance_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Container_Plan_Detail.aspx.cs">
+      <DependentUpon>Container_Plan_Detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Container_Plan_Detail.aspx.designer.cs">
+      <DependentUpon>Container_Plan_Detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Container_Plan_List.aspx.cs">
+      <DependentUpon>Container_Plan_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Container_Plan_List.aspx.designer.cs">
+      <DependentUpon>Container_Plan_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Container_Port_Detail.aspx.cs">
+      <DependentUpon>Container_Port_Detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Container_Port_Detail.aspx.designer.cs">
+      <DependentUpon>Container_Port_Detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Container_Port_List.aspx.cs">
+      <DependentUpon>Container_Port_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Container_Port_List.aspx.designer.cs">
+      <DependentUpon>Container_Port_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Container_Trace_Detail.aspx.cs">
+      <DependentUpon>Container_Trace_Detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Container_Trace_Detail.aspx.designer.cs">
+      <DependentUpon>Container_Trace_Detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Container_Trace_List.aspx.cs">
+      <DependentUpon>Container_Trace_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Container_Trace_List.aspx.designer.cs">
+      <DependentUpon>Container_Trace_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ShsictFooter.ascx.cs">
+      <DependentUpon>ShsictFooter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Control\ShsictFooter.ascx.designer.cs">
+      <DependentUpon>ShsictFooter.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\DefaultHandler.ashx.cs">
+      <DependentUpon>DefaultHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DefaultMaster.Master.cs">
+      <DependentUpon>DefaultMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DefaultMaster.Master.designer.cs">
+      <DependentUpon>DefaultMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\IMaster.cs" />
+    <Compile Include="Handler\LoginHandler.ashx.cs">
+      <DependentUpon>LoginHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Notice.aspx.cs">
+      <DependentUpon>Notice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Notice.aspx.designer.cs">
+      <DependentUpon>Notice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageBase\PageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Handler\SetFavouriteHandler.ashx.cs">
+      <DependentUpon>SetFavouriteHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\TruckImportExportList.ashx.cs">
+      <DependentUpon>TruckImportExportList.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IIsUpdateService.cs" />
+    <Compile Include="Service\IMessagePushService.cs" />
+    <Compile Include="Service\IsUpdateService.svc.cs">
+      <DependentUpon>IsUpdateService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Service\MessagePushService.svc.cs">
+      <DependentUpon>MessagePushService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Service\Routing.cs" />
+    <Compile Include="ShsictThread.aspx.cs">
+      <DependentUpon>ShsictThread.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShsictThread.aspx.designer.cs">
+      <DependentUpon>ShsictThread.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Truck_ImportExport_Detail.aspx.cs">
+      <DependentUpon>Truck_ImportExport_Detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Truck_ImportExport_Detail.aspx.designer.cs">
+      <DependentUpon>Truck_ImportExport_Detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Truck_ImportExport_List.aspx.cs">
+      <DependentUpon>Truck_ImportExport_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Truck_ImportExport_List.aspx.designer.cs">
+      <DependentUpon>Truck_ImportExport_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\VesselPlanContainerList.ashx.cs">
+      <DependentUpon>VesselPlanContainerList.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\VesselPlanPeriodList.ashx.cs">
+      <DependentUpon>VesselPlanPeriodList.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\VesselPlanPeriodName.ashx.cs">
+      <DependentUpon>VesselPlanPeriodName.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="VesselPlan_Container_Detail.aspx.cs">
+      <DependentUpon>VesselPlan_Container_Detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VesselPlan_Container_Detail.aspx.designer.cs">
+      <DependentUpon>VesselPlan_Container_Detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VesselPlan_Container_List.aspx.cs">
+      <DependentUpon>VesselPlan_Container_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VesselPlan_Container_List.aspx.designer.cs">
+      <DependentUpon>VesselPlan_Container_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VesselPlan_Detail.aspx.cs">
+      <DependentUpon>VesselPlan_Detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VesselPlan_Detail.aspx.designer.cs">
+      <DependentUpon>VesselPlan_Detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\VesselPlanList.ashx.cs">
+      <DependentUpon>VesselPlanList.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="VesselPlan_List.aspx.cs">
+      <DependentUpon>VesselPlan_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VesselPlan_List.aspx.designer.cs">
+      <DependentUpon>VesselPlan_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal.aspx.cs">
+      <DependentUpon>Portal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal.aspx.designer.cs">
+      <DependentUpon>Portal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VesselPlan_Period_Detail.aspx.cs">
+      <DependentUpon>VesselPlan_Period_Detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VesselPlan_Period_Detail.aspx.designer.cs">
+      <DependentUpon>VesselPlan_Period_Detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VesselPlan_Period_List.aspx.cs">
+      <DependentUpon>VesselPlan_Period_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VesselPlan_Period_List.aspx.designer.cs">
+      <DependentUpon>VesselPlan_Period_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VesselPlan_Period_Name.aspx.cs">
+      <DependentUpon>VesselPlan_Period_Name.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VesselPlan_Period_Name.aspx.designer.cs">
+      <DependentUpon>VesselPlan_Period_Name.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="UploadFiles\Source\icon\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DefaultMaster.Master" />
+    <Content Include="Handler\DefaultHandler.ashx" />
+    <Content Include="Handler\ContainerPlanList.ashx" />
+    <Content Include="Handler\ContainerAcceptanceList.ashx" />
+    <Content Include="Handler\ContainerPortList.ashx" />
+    <Content Include="Notice.aspx" />
+    <Content Include="Handler\ContainerPlanDetail.ashx" />
+    <Content Include="Handler\ContainerArrangeTimeList.ashx" />
+    <Content Include="Handler\LoginHandler.ashx" />
+    <Content Include="Handler\NoticeHandler.ashx" />
+    <None Include="Properties\PublishProfiles\Shsict.pubxml" />
+    <Content Include="scripts\jquery-1.9.1.min.js" />
+    <Content Include="scripts\jquery.cookie.js" />
+    <Content Include="scripts\jquery.mobile-1.3.2.js" />
+    <Content Include="scripts\jquery.mobile-1.3.2.min.js" />
+    <Content Include="scripts\jquery.mobile\images\ajax-loader.gif" />
+    <Content Include="scripts\jquery.mobile\images\icons-18-black.png" />
+    <Content Include="scripts\jquery.mobile\images\icons-18-white.png" />
+    <Content Include="scripts\jquery.mobile\images\icons-36-black.png" />
+    <Content Include="scripts\jquery.mobile\images\icons-36-white.png" />
+    <Content Include="scripts\jquery.mobile\jquery.mobile-1.3.2.css" />
+    <Content Include="scripts\jquery.mobile\jquery.mobile-1.3.2.min.css" />
+    <Content Include="scripts\jquery.mobile\jquery.mobile.structure-1.3.2.css" />
+    <Content Include="scripts\jquery.mobile\jquery.mobile.structure-1.3.2.min.css" />
+    <Content Include="scripts\jquery.mobile\jquery.mobile.theme-1.3.2.css" />
+    <Content Include="scripts\jquery.mobile\jquery.mobile.theme-1.3.2.min.css" />
+    <Content Include="scripts\json2.js" />
+    <Content Include="scripts\shsict.js" />
+    <Content Include="scripts\waypoints.js" />
+    <Content Include="scripts\waypoints.min.js" />
+    <Content Include="Service\IsUpdateService.svc" />
+    <Content Include="Service\MessagePushService.svc" />
+    <Content Include="ShsictThread.aspx" />
+    <Content Include="Truck_ImportExport_Detail.aspx" />
+    <Content Include="Truck_ImportExport_List.aspx" />
+    <Content Include="VesselPlan_Container_Detail.aspx" />
+    <Content Include="VesselPlan_Container_List.aspx" />
+    <Content Include="VesselPlan_Detail.aspx" />
+    <Content Include="VesselPlan_List.aspx" />
+    <Content Include="Portal.aspx" />
+    <Content Include="VesselPlan_Period_Detail.aspx" />
+    <Content Include="VesselPlan_Period_List.aspx" />
+    <Content Include="VesselPlan_Period_Name.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="scripts\jquery.mobile-1.3.2.min.map" />
+    <Content Include="Handler\VesselPlanList.ashx" />
+    <Content Include="Handler\VesselPlanPeriodName.ashx" />
+    <Content Include="Handler\VesselPlanPeriodList.ashx" />
+    <Content Include="Handler\VesselPlanContainerList.ashx" />
+    <Content Include="Handler\TruckImportExportList.ashx" />
+    <Content Include="Handler\SetFavouriteHandler.ashx" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shsict.Entity\Shsict.Entity.csproj">
+      <Project>{5641e8d3-3c77-486d-910c-eb2918007405}</Project>
+      <Name>Shsict.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shsict.Scheduler\Shsict.Scheduler.csproj">
+      <Project>{204287f7-ff83-4f9e-be1b-ea68bd89be73}</Project>
+      <Name>Shsict.Scheduler</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>16132</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,58 @@
+﻿@model List<Shsict.InternalWeb.Models.VesselDepart>
+
+@{
+    ViewBag.Title = "靠离泊情况";
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+}
+
+@section Header{
+
+    <script type="text/javascript">
+        $(function () {
+            $('input:jqmData(role="datebox")').mobiscroll(opt);
+            $("#SearchBox").change(function () {
+                window.location.href = "/VesselBerth/Depart/" + $("#SearchBox").val();
+            });
+            $("input[name='radio-choice-b']").change(function () {
+                window.location.href = "/VesselBerth/" + $(this).val() + "/" + $("#SearchBox").val();
+            });
+            $(".refresh").click(function () {
+                location.reload();
+            });
+        });
+    </script>
+
+    <a id="but_back" data-role="button" data-inline="true" data-rel="external" target="_top"
+        data-transition="slidedown" href="/Portal"
+        class="ui-btn-left back" data-iconpos="notext" data-mini="true">Back </a>
+    <a class="refresh"></a>
+    <div class="ui-body ui-body-c" style="padding: 0 10px; margin-bottom: -1px;">
+        @Html.TextBoxFor(a => a[0].MyDate, new { id = "SearchBox", data_role = "datebox" })
+        <div style="float: left">
+            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                <input type="radio" name="radio-choice-b" id="radio-choice-c" value="Berth">
+                <label for="radio-choice-c">靠泊</label>
+                <input type="radio" name="radio-choice-b" id="radio-choice-e" value="Depart" checked="checked">
+                <label for="radio-choice-e">离泊</label>
+            </fieldset>
+        </div>
+        <div class="fr clearfix zdl">
+            <h6>准点率:</h6>
+            <h2>@Model[0].punctualityRate.ToString("0.00")%</h2>
+        </div>
+
+    </div>
+}
+
+<ul data-role="listview" class="bigfont">
+    @foreach (Shsict.InternalWeb.Models.VesselDepart item in Model)
+    {
+        <li>
+            <h3>@item.VSL_CNNAME</h3>
+            <p>计划离泊：@item.VBT_PDPTDT </p>
+            <p>实际离泊：@item.VBT_ADPTDT</p>
+            <p>完工时间：@item.VOT_AWKENTM</p>
+            <p class="ui-li-aside">@item.VBT_STATUS</p>
+        </li>        
+    }
+</ul>

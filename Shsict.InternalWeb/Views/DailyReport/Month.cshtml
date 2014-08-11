@@ -1,0 +1,80 @@
+﻿@model Shsict.InternalWeb.Models.DailyReport
+@{
+    ViewBag.Title = "昼夜吞吐量";
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+}
+@section Header{
+    <script type="text/javascript">
+        $(function () {
+            $('input:jqmData(role="datebox")').mobiscroll(opt);
+            $("#SearchBox").change(function () {
+                window.location.href = "/DailyReport/Month/" + $("#SearchBox").val();
+            });
+            $("input[name='radio-choice-b']").change(function () {
+
+                window.location.href = "/DailyReport/" + $(this).val() + "/" + $("#SearchBox").val();
+            });
+            $(".refresh").click(function () {
+
+                location.reload();
+            });
+        });
+    </script>
+
+    <a id="but_back" data-role="button" data-inline="true" data-rel="external" target="_top"
+        data-transition="slidedown" href="/Portal"
+        class="ui-btn-left back" data-iconpos="notext" data-mini="true">Back </a>
+    <a class="refresh"></a>
+    <div class="ui-body ui-body-c" style="padding: 0 10px; margin-bottom: -1px;">
+
+        @using (Html.BeginForm("index", "DailyReport", FormMethod.Post, new { id = "SearchForm" }))
+        {
+            @Html.TextBoxFor(a => a.MyDate, new { id = "SearchBox", data_role = "datebox" })
+     
+            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                <input type="radio" name="radio-choice-b" id="radio-choice-c" value="Day">
+                <label for="radio-choice-c">日</label>
+                <input type="radio" name="radio-choice-b" id="radio-choice-d" value="Month" checked="checked">
+                <label for="radio-choice-d">月</label>
+                <input type="radio" name="radio-choice-b" id="radio-choice-e" value="Year">
+                <label for="radio-choice-e">年</label>
+
+            </fieldset>     
+        }
+
+    </div>
+}
+
+<h3 class="tit">基本信息</h3>
+<table data-role="table" data-mode="reflow" class=" table-stroke">
+    <thead>
+        <tr>
+
+            <th data-priority="6">月计划TEU</th>
+            <th data-priority="7">月目标TEU</th>
+            <th data-priority="8">月实际TEU</th>
+            <th data-priority="9">月驳船</th>
+            <th data-priority="10">月穿梭巴士</th>
+            <th data-priority="11">月计划完成率</th>
+            <th data-priority="12">月预计箱量</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+
+
+            <td>@Html.DisplayFor(a => a.MONTHLY_PLAN)</td>
+            <td>@Html.DisplayFor(a => a.MONTHLY_TARGET)</td>
+            <td>@Html.DisplayFor(a => a.MONTHLY_ACTUAL)</td>
+            <td>@Html.DisplayFor(a => a.MONTHLY_BARGE)</td>
+            <td>@Html.DisplayFor(a => a.MONTHLY_SHUTTLE)</td>
+            <td>@Html.DisplayFor(a => a.MyMONTHLY_COMPLETERATE)</td>
+            <td>@Html.DisplayFor(a => a.MONTHLY_PLANCONTAINER)</td>
+
+        </tr>
+    </tbody>
+</table>
+
+
+

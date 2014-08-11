@@ -1,0 +1,71 @@
+﻿@model List<Shsict.InternalWeb.Models.Mechanical>
+
+@{
+    ViewBag.Title = "未完成维修的机械及故障时间";
+    Layout = "~/Views/Shared/_LayoutPad.cshtml";
+}
+
+<script type="text/javascript">
+    $(function () {
+        $("#MyTime").mobiscroll(opt);
+        $("#BtnMyTime").click(function () { $("#MyTime").focus(); });
+        $("#SearchBox").change(function () {
+            window.location.href = "/PadMechanicalError/Index/" + $("#MyTime").val() + "$" + $("#SearchBox").val();
+        });
+        $("#MyTime").change(function () {
+            window.location.href = "/PadMechanicalError/Index/" + $("#MyTime").val() + "$" + $("#SearchBox").val();
+        });
+    });
+</script>
+<div class="ui-body">
+    <div class="ui-bar ui-bar-c">
+        <h4>未完成维修的机械及故障时间</h4>
+        <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" id="txt_btn">
+             <div style="position: absolute; left: 14px; top: 31px">@Html.TextBoxFor(a => a[0].MyDate, new { id = "MyTime", data_role = "datebox" }) </div>
+            @Html.TextBoxFor(a => a[0].SEARCHKEY, new { id = "SearchBox", data_role = "datebox" })
+              <button data-icon="grid" id="BtnMyTime" >@Model[0].MyDate</button> 
+        </fieldset>
+    </div>
+    <div class="ui-body-d">
+        <table data-role="table" id="financial-table-reflow" data-mode="reflow" class="financial-table-reflow table-stroke M-repair">
+            <thead>
+                <tr>
+                    <th>机械号</th>
+                    <th>故障描述</th>
+                    <th>修复时长</th>
+                    <th>确认时长</th>
+                    <th>故障状态</th>
+                    <th>报故时间</th>
+                    <th>接故时间</th>
+                    <th>修复时间</th>
+                    <th>确认时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Shsict.InternalWeb.Models.Mechanical item in Model)
+                {
+                    if (@item.MECHANICALNO != "暂无数据")
+                    {         
+                    <tr>
+                        <th>@item.MECHANICALNO</th>
+                        <td>@item.SENDMESSAGE</td>
+                        <td>@item.EngERRORTIME</td>
+                        <td>@item.OptERRORTIME</td>
+                        <td>@item.FaultStatus</td>
+                        <td>@item.REPORTTIME</td>
+                        <td>@item.RECEIVETIME</td>
+                        <td>@item.REPAIRTIME</td>
+                        <td>@item.CONFIRMREPAIRTIME</td>
+                    </tr>                     
+                    }
+                    else
+                    {
+                    <tr>
+                        <td colspan="5">暂无数据</td>
+                    </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

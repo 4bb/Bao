@@ -1,0 +1,51 @@
+﻿@model List<Shsict.InternalWeb.Models.OperatePlan>
+
+@{
+    ViewBag.Title = "出勤人员资质情况";
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+}
+
+@section Header{
+    <script type="text/javascript">
+        $(function () {
+            $('input:jqmData(role="datebox")').mobiscroll(opt);
+            $("#SearchBox").change(function () {
+                window.location.href = "/OperatePlan/DayShift/" + $("#SearchBox").val();
+            });
+            $("input[name='radio-choice-b']").change(function () {
+                window.location.href = "/OperatePlan/" + $(this).val() + "/"+$("#SearchBox").val();
+            });
+            $(".refresh").click(function () {
+                location.reload();
+            });
+        });
+    </script>
+
+        <a id="but_back" data-role="button" data-inline="true" data-rel="external" target="_top"
+        data-transition="slidedown" href="/Portal"
+        class="ui-btn-left back" data-iconpos="notext" data-mini="true">Back </a>
+    <a class="refresh"></a>
+    <div class="ui-body ui-body-c" style="padding: 0 10px; margin-bottom: -1px;">       
+        @Html.TextBoxFor(a => a[0].MyDate, new { id = "SearchBox", data_role = "datebox" })
+        <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+            <input type="radio" name="radio-choice-b" id="radio-choice-c" value="DayShift" checked="checked">
+            <label for="radio-choice-c">日班</label>
+            <input type="radio" name="radio-choice-b" id="radio-choice-e" value="NightShift">
+            <label for="radio-choice-e">夜班</label>
+        </fieldset>
+
+    </div>
+}
+
+<ul data-role="listview">
+    @foreach (Shsict.InternalWeb.Models.OperatePlan item in Model)
+    {
+        <li>
+            <h3>@item.TEAMNAME</h3>
+            <p>派工路数：@item.OP_ROUTE | 桥边：@item.QB | 喊勾：@item.HG</p>
+            <p>辅助工：@item.FZ  |  其他：@item.OTHER | 总人数：@item.SHIFT_NUM</p>
+            <p>出勤差异：@item.ATD_DIFF</p>
+        </li>        
+    }
+</ul>
+

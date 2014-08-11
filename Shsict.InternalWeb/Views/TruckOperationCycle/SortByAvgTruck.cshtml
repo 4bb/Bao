@@ -1,0 +1,130 @@
+﻿@model List<Shsict.InternalWeb.Models.TruckOperationCycle>
+
+@{
+    ViewBag.Title = "单车运行周期";
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+}
+@section Header{
+    <script type="text/javascript">
+        $(function () {
+            $('input:jqmData(role="datebox")').mobiscroll(opt);
+
+            $("[name='radio-choice-b']").click(function () {
+                var myTime = parseInt($("#myTime .ui-btn-text").text());
+                var sel = $(this).val();
+
+                window.location.href = "/TruckOperationCycle/SortByAvgTruck/" + myTime + sel;;
+            });
+
+            $("#plus").click(function () {
+                var myTime = parseInt($("#myTime .ui-btn-text").text()) + 5;
+                var sel = $(".ui-radio-on").prev().val();
+
+                $("#myTime span.ui-btn-text").text(myTime + "min");
+                window.location.href = "/TruckOperationCycle/SortByAvgTruck/" + myTime + sel;
+            });
+            $("#minus").click(function () {
+                var myTime = parseInt($("#myTime .ui-btn-text").text()) - 5;
+                var sel = $(".ui-radio-on").prev().val();
+
+                $("#myTime span.ui-btn-text").text(myTime + "min");
+                window.location.href = "/TruckOperationCycle/SortByAvgTruck/" + myTime + sel;
+            });
+            $(".Mysort").click(function () {
+                var page = $(this).attr('id');
+                var myTime = parseInt($("#myTime .ui-btn-text").text());
+                var sel = $(".ui-radio-on").prev().val();
+
+                window.location.href = "/TruckOperationCycle/" + page + "/" + myTime + sel;;
+            });
+            $(".refresh").click(function () {
+                location.reload();
+            });
+        });
+    </script>
+
+
+    <a id="but_back" data-role="button" data-inline="true" data-rel="external" target="_top"
+        data-transition="slidedown" href="/Portal"
+        class="ui-btn-left back" data-iconpos="notext" data-mini="true">Back </a>
+    <a class="refresh"></a>
+    <div class="ui-body ui-body-c" style="padding: 0 10px; margin-bottom: -1px;">
+        @{ string MyTime = "25min";
+           string stopfg = "N";
+
+           if (@Html.ViewContext.RouteData.Values["id"] != null)
+           {
+               string _id = @Html.ViewContext.RouteData.Values["id"].ToString();
+               MyTime = _id.Substring(0, _id.Length - 1) + "min";
+               stopfg = _id.Substring(_id.Length - 1, 1);
+           }
+        }
+        <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" style="float: left">
+
+
+            <a id="myTime" href="#" data-role="button" data-inline="true">
+                @MyTime
+            </a>
+            <a id="plus" href="#" data-role="button" data-icon="plus" data-iconpos="notext">Arrow up</a>
+            <a id="minus" href="#" data-role="button" data-icon="minus" data-iconpos="notext">Arrow down</a>
+
+
+        </fieldset>
+        <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" style="float: right">
+            @if (stopfg.Trim().Equals("N"))
+            {
+                <input type="radio" name="radio-choice-b" id="radio-choice-c" value="N" checked="checked">
+                <label for="radio-choice-c">正常</label>
+                <input type="radio" name="radio-choice-b" id="radio-choice-d" value="Y">
+                <label for="radio-choice-d">暂停</label>
+            }
+            else
+            {
+                <input type="radio" name="radio-choice-b" id="radio-choice-c" value="N">
+                <label for="radio-choice-c">正常</label>
+                <input type="radio" name="radio-choice-b" id="radio-choice-d" value="Y" checked="checked">
+                <label for="radio-choice-d">暂停</label>
+            }
+        </fieldset>
+
+
+    </div>
+}
+<div class="filter">
+    <div class="ui-body-d ui-body" data-role="navbar" data-iconpos="right" id="sortCycle">
+        <ul>
+
+            <li><a href="#" id="SortByCompTruck" class="Mysort">完成车次</a></li>
+            <li><a href="#" data-icon="arrow-u" id="SortByAvgTruckDesc" class="Mysort">平均周期</a></li>
+            <li><a href="#" id="SortByCurrent" class="Mysort">当前周期</a></li>
+            <li><a href="#" id="SortByToloc" class="Mysort">目标</a></li>
+        </ul>
+    </div>
+</div>
+<ul data-role="listview">
+    @{  string stopfg2 = "N";
+
+        if (@Html.ViewContext.RouteData.Values["id"] != null)
+        {
+            string _id = @Html.ViewContext.RouteData.Values["id"].ToString();
+            stopfg2 = _id.Substring(_id.Length - 1, 1);
+        }
+
+        foreach (Shsict.InternalWeb.Models.TruckOperationCycle item in Model)
+        {
+        <li>
+            <h3>@item.TRUCKNO</h3>
+            <p>完成车次数：@item.COMPLETETRUCKNUM </p>
+            <p>平均周期： @item.AVEPERIOD</p>
+            <p>目标1： @item.TOLOC1 |目标2： @item.TOLOC2</p>
+
+            @if (stopfg2.Trim().Equals("Y"))
+            {
+                <p>状态： @item.STATUS </p>
+            }
+
+            <span class="ui-li-count">当前周期：@item.CURRENTINSTRUCTION</span>
+        </li>
+        }
+    }
+</ul>

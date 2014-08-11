@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/jquery-1.9.1.min.js"></script>
+<script>
+    $(function () {
+        $("#ThreadStar").click(function () {
+            $.ajax({
+                url: "/ShsictThread/ThreadStar",
+                type: "post",
+                success: function (msg) {
+
+                    $("#errorMsg").css("display", "block");
+                    $("#errorMsg").text(msg);
+
+                },
+                error: function (msg) {
+                    $("#errorMsg").css("display", "block");
+                    $("#errorMsg").text(msg);
+                }
+            });
+        });
+
+        $("#ThreadStop").click(function () {
+            $.ajax({
+                url: "/ShsictThread/ThreadStop",
+                type: "post",
+                success: function (msg) {
+                    $("#errorMsg").css("display", "block");
+                    $("#StatusMsg").css("display", "none");
+                    $("#errorMsg").text(msg);
+
+                },
+                error: function (msg) {
+                    $("#errorMsg").css("display", "block");
+                    $("#errorMsg").text(msg);
+                }
+            });
+        });
+    });
+</script>
+<h2></h2>
+@{  string aa = ViewBag.ThreadStatus;
+
+    if (aa.IndexOf("Has Open") > -1)
+    { 
+
+    <button type="button" class="ui-btn ui-corner-all ui-shadow" id="ThreadStop">Thread Stop</button>     
+    }
+    else
+    {
+    <button type="button" class="ui-btn ui-corner-all ui-shadow" id="ThreadStar">Thread Star</button>
+    }
+    <div id="errorMsg" style="display: none"></div>
+                       
+}
+<div id="StatusMsg">@ViewBag.ThreadStatus</div>
+
+

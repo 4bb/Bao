@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Shsict.InternalWeb.Services.SendMessageService" CodeBehind="SendMessageService.svc.cs"  Factory="System.ServiceModel.Activation.WebServiceHostFactory"  %>

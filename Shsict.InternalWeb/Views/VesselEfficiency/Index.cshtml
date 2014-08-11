@@ -1,0 +1,44 @@
+﻿@model List<Shsict.InternalWeb.Models.VesselEfficiency>
+
+@{
+    ViewBag.Title = "船舶效率";
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
+}
+
+@section Header{
+    <script type="text/javascript">
+        $(function () {
+            $('input:jqmData(role="datebox")').mobiscroll(opt);
+            $("#SearchBox").change(function () {
+                window.location.href = "/VesselEfficiency/Index/" + $("#SearchBox").val();
+            });
+            $(".refresh").click(function () {
+
+                location.reload();
+            });
+        });
+    </script>
+    <a id="but_back" data-role="button" data-inline="true" data-rel="external" target="_top"
+        data-transition="slidedown" href="/Portal"
+        class="ui-btn-left back" data-iconpos="notext" data-mini="true">Back </a>
+    <a class="refresh"></a>
+    <div class="ui-body ui-body-c" style="padding: 0 10px; margin-bottom: -1px;">
+        <fieldset data-type="horizontal" data-mini="true">
+            @Html.TextBoxFor(a => a[0].MyDate, new { id = "SearchBox", data_role = "datebox" })
+        </fieldset>
+    </div>
+}
+
+<ul data-role="listview" class="bigfont">
+    @foreach (Shsict.InternalWeb.Models.VesselEfficiency item in Model)
+    {
+        <li>
+            <h3>@item.VSL_CNNAME</h3>
+            <p>净台时量：@item.QCNETTM</p>
+            <p>前三月平均效率：@item.AVGEFF</p>
+            <p>计划毛效率：@item.ABTHNO</p>
+            <p class="ui-li-aside">@item.QCOPTM</p>
+        </li>    
+    }
+</ul>
+
